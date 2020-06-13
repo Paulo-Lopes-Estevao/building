@@ -1,0 +1,18 @@
+{
+    "description": "Library of négocios rule << Building >>",
+    "name": "Paulo/Building",
+    "authors": [
+        {
+            "name": "Paulo Sebastião Estevão",
+            "email": "pl1745240@gmail.com"
+        }
+    ],
+    "require": {
+    	"php":">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Build\\": "Building"
+        }
+    }
+}
