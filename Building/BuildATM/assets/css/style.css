@@ -1,0 +1,110 @@
+.Title{
+    text-align: center;
+    margin-top: 30px;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.heading2{
+    margin-top: 30px;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.stati{
+    text-align: right;
+    font-size: 50px;
+}
+
+.stati a{
+    color: #183d63;
+    background-color: #ced4da;
+    box-shadow: 1px 1px black;
+    border-radius: 80px 100px 10px 421px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+    .create{
+        text-align: center;
+        margin-top: 230px;;
+    }
+
+
+
+.input{
+    
+width: 290px;
+height: calc(2.25rem + 2px);
+padding: .375rem .75rem;
+font-size: 1rem;
+line-height: 1.5;
+color: #495057;
+background-color: #fff;
+background-clip: padding-box;
+border: 1px solid #ced4da;
+border-radius: .25rem;
+transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+}
+
+.pan{
+margin-bottom: 1rem;
+}
+
+.input ::placeholder{
+font-weight: 600;
+font-size: 20px;
+}
+
+    .bt{
+        width: 250px;
+        height: 70px;
+        border-radius: 100px 115px 110px 110px;
+        font-size: 20px;
+        font-family: Arial, Helvetica, sans-serif
+    }
+
+    .ba-a{
+        background-color: #283618;
+        color: #fff;
+        border-color: #283618;
+        
+    }
+
+.bt{
+font-size: 1rem;
+line-height: 1.5;
+transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+
+    .ba-b{
+        background-color: #283618;
+        color: #fff;
+        border-color: #283618;
+        border-radius: 150px 10px;
+    }
+
+    /*INDEX*/
+
+    .two{
+        margin-left: 835px;
+    }
+    
+    .two button{
+        list-style: none;
+        margin-bottom: 5rem;
+    }
+
+
+
+   
+    .one button{
+        list-style: none;
+        margin-bottom: 5rem;
+    }
+
+
+    .tableform{
+        margin-left: 270px;
+    }
