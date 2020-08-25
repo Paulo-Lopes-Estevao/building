@@ -12,6 +12,3 @@ Se você descobrir uma vulnerabilidade de segurança no BuildATM, por favor envi
 
 If you discover a security vulnerability within BuildATM, please send an e-mail to Paulo Lopes via [pl1745240@gmail.com].
 
-## License
-
-The WalaléTEC framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
