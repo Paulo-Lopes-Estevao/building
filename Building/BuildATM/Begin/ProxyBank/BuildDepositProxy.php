@@ -6,8 +6,21 @@ use Build\BuildATM\Begin\BankFace\BankAccount;
 
 class BuildDepositProxy extends BuildDepositHeavy implements BankAccount
 {
+    /**
+     * Retorna o valor da soma do crédito actual e valor depositado
+     * 
+     * @var int $balance
+     * 
+     */
     private $balance = null;
 
+
+    /**
+     * Retorna o crédito 
+     * 
+     * @return int
+     * 
+     */
     public function getBalance(): int
     {
         // because calculating balance is so expensive,
@@ -17,7 +30,6 @@ class BuildDepositProxy extends BuildDepositHeavy implements BankAccount
         if ($this->balance === null) {
 
             $this->balance = parent::getBalance();
-            echo $this->balance;
     
         }
 

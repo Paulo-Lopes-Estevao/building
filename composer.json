@@ -1,7 +1,8 @@
 {
     "description": "Library of rule of businesses  Building",
     "name": "paulo/building",
-    "author": [
+    "license": "MIT",
+    "authors": [
         {
             "name": "Paulo Sebastião Estevão",
             "email": "pl1745240@gmail.com"

@@ -6,15 +6,43 @@ use Build\BuildATM\Facade;
 
 class RuleCreateFile{
 
+  /**recebe os dados
+   * 
+   * @var array $resgister
+   * 
+   */
     private $resgister =[];
+    
+    
+    /** recebe a data e hora
+     * 
+     * 
+     */
     private $datatime; 
 
+
+    /**
+     * Retorno da hora e data da maquina
+     * | Return of functions
+     * 
+     * @return string|false
+     * 
+     */
     private function GetDate(){
         
         $data = date("d/m/Y H:i:s");
        return $this->datatime = $data;
     }
 
+    /**
+     * Cadastrar um novo usuário
+     * | Return of functions
+     * 
+     *@param mixed $resgister recebe todos os dados para o registro
+     *
+     *@return void
+     * 
+     */
     public function CreateFile($resgister)
     {
         $this->resgister = $resgister;
@@ -27,6 +55,16 @@ class RuleCreateFile{
 
     }
 
+
+    /**
+     * Cadastrar um novo usuário
+     * | Return of functions
+     * 
+     *@param \Build\BuildATM\SecretRules\RuleAccount $cad
+     *
+     *@return void
+     * 
+     */
     public function CreateCard(RuleAccount $cad)
     {  
        $result = [0=>$cad->Card()];
@@ -47,7 +85,25 @@ class RuleCreateFile{
 
     }
 
-    public function CreateCredit(int $cad,int $money,int $deposit, int $outcredit)
+
+    /**
+     * Depositar dinheiro na conta
+     * | Return of functions
+     * 
+     *
+     *@param mixed $cad recebe o `Code`
+     *
+     *@param int $money recebe o valor da soma do crédito e deposito
+     *
+     *@param int $deposit recebe o deposito
+     *
+     *@param int $outcredit mostra o valor que saiu na conta
+     *
+     *@return void
+     * 
+     * 
+     */
+    public function CreateCredit($cad,int $money,int $deposit, int $outcredit=0)
     {
 
       $date =[];
@@ -59,6 +115,47 @@ class RuleCreateFile{
       fclose($newfile);
     }
 
+
+
+    /**
+     * Guarda as movimentações na conta
+     * | Return of functions
+     * 
+     *
+     *@param mixed $cad recebe o `Code`
+     *
+     *@param int $trans mostra o valor transferido
+     *
+     *@param int $deposit recebe o deposito
+     *
+     *@param int $outcredit mostra o valor que saiu na conta
+     *
+     *@return void
+     * 
+     * 
+     */
+    public function CreateStatusBank($cad,int $deposit,int $trans = 0,int $outcredit){
+
+      $date =[];
+      $this->GetDate();
+      $code = $cad;
+      array_push($date,$code,$deposit,$trans,$outcredit,$this->datatime);
+      $newfile = fopen("Account/Bank/status.csv","a");
+      fwrite($newfile,implode(", ",$date) . "\r\n");
+      fclose($newfile);
+        
+    }
+
+
+    /**
+     * Lê os dados guardados
+     * | Return of functions
+     * 
+     *@param string $whatfile
+     *
+     *@return array
+     * 
+     */
     public function ReadFile(string $whatfile)
     {
         $visfile = fopen("Account/Bank/{$whatfile}.csv","r+");

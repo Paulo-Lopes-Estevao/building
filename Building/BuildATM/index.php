@@ -19,7 +19,7 @@
     </div>
 
 
-    <Section>
+    <Section id="access">
         <div>
             <h2 class="heading2">Inserir o cartão</h2>
             <div>
@@ -35,7 +35,7 @@
     </Section>
 
 
-    <section id="num" style="display: none;">
+    <section id="creat" style="display: none;">
 
     <div class="stati">
         <a href="">Back</a>
@@ -45,11 +45,11 @@
             <form action="" method="post">
                 
                 <div class="pan">
-                  <input type="text " placeholder="Full name" name="nome">
+                  <input type="text " class="input verifylength" placeholder="Full name" name="nome" required>
                 </div>
-                <div class="pan">
-                  <input type="number" placeholder="Pin" name="pin">
-                </div>
+                <!--div class="pan">
+                  <input type="number" class="input verifylength" placeholder="Pin" name="code" required>
+                </div-->
                 
                 
                 <button class="bt ba-a">Create</button>
@@ -63,7 +63,7 @@
     
 </body>
 </html>
-<script src="assets/js/script.jss"></script>
+<script src="assets/js/Indexscript.js"></script>
 
 <?php
 

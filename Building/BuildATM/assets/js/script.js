@@ -1,4 +1,6 @@
 
+    
+    
         var a = document.getElementById("Dinheiro");
         var b = document.getElementById("Consultar");
         var d = document.getElementById('Transferência');
@@ -14,6 +16,9 @@
         var ba= document.getElementById("bank")
         var ok = document.getElementById("okcorrect");
         var oc = document.getElementById("okconfirm");
+        var blc = document.getElementById("blc")
+        var stat= document.getElementById("stt")
+
         
 
             a.addEventListener('click', Dinheiro)
@@ -26,11 +31,16 @@
 
             var div = document.createElement('div')
             var div2 = document.createElement('div')
+            var div3 = document.createElement('div')
             var h1 = document.createElement('h1')
             var input = document.createElement('input')
             var form = document.createElement('form')
             var button = document.createElement('button')
             var da = document.createElement('a')
+            var h3 = document.createElement('h3')
+            var h2 = document.createElement('h2')
+            var p = document.createElement('p')
+            var h4 = document.createElement('h4')
             var da2 = document.createElement('a')
 
 function depositoConta(){
@@ -52,20 +62,14 @@ oc.style.marginTop="-110px";
             
 function Dinheiro(){
     
-   // a.innerText="2000.00"
-   // b.innerText="4000.00"
-   // c.innerText="6000.00"
-   // es.innerText="20000.00"
-   // co.innerText="40000.00"
     ok.style.display="none"
-
-    
     i.innerText=""
-
+    form.style.display="block"
+    div3.style.display="block"
     form.method="POST"
     form.action=""
     form.setAttribute("id","form2")
-    div2.setAttribute("class","pan")
+    div3.setAttribute("class","pan")
     input.setAttribute("class","input")
     button.setAttribute("class","bt ba-a")
     input.type="number";
@@ -74,7 +78,7 @@ function Dinheiro(){
     input.required="true"
     button.textContent="OK"
     var att = f.appendChild(form)
-    var put = att.appendChild(div2)
+    var put = att.appendChild(div3)
     put.appendChild(input);
     att.appendChild(button)
     
@@ -111,6 +115,8 @@ function Dinheiro(){
 
 function deposito()
 {
+    ok.style.display="block"
+    form.style.display="none"
     vw.style.display="block"
     i.innerText=""
     da.setAttribute('class','stati')
@@ -135,13 +141,17 @@ function deposito()
 function Consultar()
 {
     
+    let resultbanlace = blc.innerText;
+    div2.style.display="none";
+    form.style.display="none"
+    ok.style.display="none"
     vw.style.display="none"
     f.style.display="block"
     div.style.display="block"
     h1.style.display="block"
     e.style.marginLeft="166px"
     var subdiv = f;
-    h1.textContent="Crédito:"
+    h1.textContent="Crédito: "+resultbanlace
     h1.style.fontSize="40px"
     h1.style.marginLeft="90px"
     div.style.width="400px"
@@ -150,12 +160,17 @@ function Consultar()
     div.style.backgroundColor="#345f34"
     var subdivh1 = subdiv.appendChild(div)
     subdivh1.appendChild(h1)
-
-    
+  
 }
 
 
 function Estrato(){
+
+    var ed = stat.innerText;
+    var md= ed.split(" ").join("|");
+    form.style.display="none"
+    div2.style.display="block"
+    ok.style.display="none"
     vw.style.display="none"
     f.style.display="block"
     div.style.display="block"
@@ -163,6 +178,8 @@ function Estrato(){
     e.style.marginLeft="166px"
     var subdiv = f;
     h1.textContent="Status Bancário"
+    h3.textContent="Deposit Transf Outcredit Date"
+    h2.textContent= md
     h1.style.fontSize="40px"
     h1.style.marginLeft="70px"
     div.style.width="400px"
@@ -171,17 +188,25 @@ function Estrato(){
     div.style.backgroundColor="#345f34"
     var subdivh1 = subdiv.appendChild(div)
     subdivh1.appendChild(h1)
+    let intdiv = subdivh1.appendChild(div2);
+    intdiv.setAttribute("id","stats")
+    intdiv.appendChild(h3);
+    intdiv.appendChild(h2)
+
 }
 
 function Conta(){
 
+    ok.style.display="none"
+    form.style.display="none"
+    div2.style.display="none"
     vw.style.display="none"
     f.style.display="block"
     div.style.display="block"
     h1.style.display="block"
     e.style.marginLeft="166px"
     var subdiv = f;
-    h1.textContent="Status Bancário"
+    h1.textContent="Minnha conta"
     h1.style.fontSize="40px"
     h1.style.marginLeft="70px"
     div.style.width="400px"
@@ -192,4 +217,3 @@ function Conta(){
     subdivh1.appendChild(h1)
 
 }
-

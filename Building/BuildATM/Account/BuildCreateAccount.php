@@ -5,57 +5,141 @@ use Build\BuildATM\SecretRules\RuleAccount;
 use Build\BuildATM\SecretRules\RuleCreateFile;
 
 
-class BuildCreateAccount extends RegisterAcess{
+class BuildCreateAccount {
 
-    
+
+    /**
+     * Instancia da class
+     * 
+     * @return RuleCreateFile
+     * 
+     */
+    private $RCF;
+
+
+    /**
+     * Instancia da class
+     * 
+     * @return RuleAccount
+     * 
+     */
+    private $Ra;
+
+
+    /**
+     * Carrega os dados da base 
+     * 
+     * @var array
+     * 
+     */
     private $acess;
-    private $verify;
-    public $session;
 
+
+    /**
+     * retorna os do card para serem comparados
+     * 
+     * @return mixed 
+     * 
+     */
+    private $verify;
+
+
+     /**
+     * Saida dos dados do input name
+     * 
+     * @return string $Name
+     * @var null $Code
+     * 
+     */
+    private $Name,$Code;
+
+
+    /**
+     * Guarda os dados na base após a insersão 
+     * 
+     * @return false quando os dados inseridos já estão registrados
+     * 
+     */
     private function Guard()
     {
+        $this->RClass();
 
-        $Ra = new RuleAccount();
-        $RCF = new RuleCreateFile();
-        $Ra->Card();
-        $empdata = $Ra->SecretPin($this->getpin()); 
-        $Data=array($this->getnome(),$empdata);
+        $gercode= $this->Ra->Card();
+        $geriban= $this->Ra->Card(9);
+
+        $empdata = $this->Ra->SecretPin($gercode);
+
+        $Data=array($this->Name,$empdata,$geriban);
+
         $datasecurity = array($Data);
+
         $revert = $datasecurity;
 
         $verifypin = $this->verify;
-        if ($this->getpin() == $verifypin) {
-            
-            echo("Codigo Já esta a ser usado".PHP_EOL);
+	
+	
+			if(!empty($this->Name)){
+				
+			if ($verifypin == $gercode)
+		{ 
+            echo("Actualiza a Pagina");
         }
         else {
             
-            //$RCF->CreateFile($revert);
-            //$card = $RCF->CreateCard($Ra);
+            $this->RCF->CreateFile($revert);
+            $card = $this->RCF->CreateCard($this->Ra);
+			
+			header("Location: index.php?cd=".$gercode);
+			exit;
             
         }
+			}
+		
+		
+       
+        
        
         
     }
 
-    
+    private function RClass(){
+        $this->RCF = new RuleCreateFile();
+        $this->Ra = new RuleAccount();
+    }
 
+    
+    /**
+     * Carrega os dados da base para serem verificados com dados da insersão 
+     * 
+     * 
+     */
     public function Verify(){
-        $RCF = new RuleCreateFile();
-        $read = $RCF->readfile("account");
+        
+        $this->RClass();
+        
+        $read = $this->RCF->readfile("account");
+
         $this->acess = $read;
-        $Ra = new RuleAccount();
+
+        
+
         $date = $this->acess;
-        $pin = $this->getpin();  
+
         foreach ($date as $key => $value) {
-            $pinhash = $value["Pin"];
-            $verify = $Ra->DescretPin($pinhash);
-            while ($pin == $verify) {
+
+            $pinhash = $value["Code"];
+            
+            $verify = $this->Ra->DescretPin($pinhash);
+            
+			
+            if($verify) {
+
                $bool = $verify ++;
                
                if ($bool) {
+                
                 $this->verify = $bool;
-                //$_SESSION[BuildCreateAccount::SESSION] = $value;
+
                }
                
             }
@@ -68,9 +152,16 @@ class BuildCreateAccount extends RegisterAcess{
 
     }
 
-    public function Access()
+
+    /**
+     * Verifica se o usuário esta logado 
+     * 
+     * @return else  fica da logado
+     * 
+     */
+    public function Create(string $name)
     { 
-        
+        $this->Name = $name;
        $this->Verify();
        $this->Guard(); 
 

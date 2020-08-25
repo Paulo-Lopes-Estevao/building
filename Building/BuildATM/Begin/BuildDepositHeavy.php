@@ -7,7 +7,10 @@ use Build\BuildATM\Begin\ReusedCredit;
 class BuildDepositHeavy implements BankAccount
 {
     /**
-     * @var int[]
+     * Recebe o valor depositado
+     * 
+     * @var array $money
+     * 
      */
     private  $money = [];
 
@@ -16,12 +19,25 @@ class BuildDepositHeavy implements BankAccount
         $this->money[] = $amount;
     }
 
+    /**
+     * Retorna o array [ crédito actual & depositado ] 
+     * 
+     * @return array|int
+     * 
+     */
     private function transactions(){
         
         $return = new ReusedCredit();
-       return $return->getNowCredit($this->money);
+
+       return $return->setNowCredit($this->money);
     }
 
+    /**
+     * Soma o array [ crédito actual & depositado ]
+     * 
+     * @return int
+     * 
+     */
     public function getBalance(): int
     {
         // this is the heavy part, imagine all the transactions even from

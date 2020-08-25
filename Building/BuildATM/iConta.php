@@ -5,16 +5,18 @@ session_id();
 
 require_once("../../vendor/autoload.php");
 use Build\BuildATM\Facade;
+
 $user=Facade::UserLogin();
 Facade::ChecktAccount();
 $run = new Facade();
 $run;
-
-
+$balance = $run->vwcredit->getNowCredit();
 
 ?>
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,7 +63,11 @@ $run;
         </div>
     </td>
     <td>
+        
         <div class="tableform" id="tableform" style="display: none;">
+        
+                    <h2 style="display: none;" id="blc"><?= $balance ?></h2>
+                    <h2 style="display: none;" id="stt"><?= $status = $run->vwcredit->getNowStatus() ?></h2>
 
             <form action="" method="POST" id="form">
                
