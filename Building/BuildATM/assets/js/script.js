@@ -44,6 +44,7 @@
             var da2 = document.createElement('a')
 
 function depositoConta(){
+    
 a.style.display="none"
 e.style.display="none"
 b.style.display="none"

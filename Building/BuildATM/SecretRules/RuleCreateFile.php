@@ -36,7 +36,7 @@ class RuleCreateFile{
 
     /**
      * Cadastrar um novo usuário
-     * | Return of functions
+     *
      * 
      *@param mixed $resgister recebe todos os dados para o registro
      *
@@ -58,7 +58,7 @@ class RuleCreateFile{
 
     /**
      * Cadastrar um novo usuário
-     * | Return of functions
+     *
      * 
      *@param \Build\BuildATM\SecretRules\RuleAccount $cad
      *
@@ -88,7 +88,7 @@ class RuleCreateFile{
 
     /**
      * Depositar dinheiro na conta
-     * | Return of functions
+     *
      * 
      *
      *@param mixed $cad recebe o `Code`
@@ -119,7 +119,7 @@ class RuleCreateFile{
 
     /**
      * Guarda as movimentações na conta
-     * | Return of functions
+     *
      * 
      *
      *@param mixed $cad recebe o `Code`
@@ -149,7 +149,7 @@ class RuleCreateFile{
 
     /**
      * Lê os dados guardados
-     * | Return of functions
+     *
      * 
      *@param string $whatfile
      *
