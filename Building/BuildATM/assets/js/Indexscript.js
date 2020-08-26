@@ -33,7 +33,7 @@ function Check(){
 
 
 function Checa(){
-    button.textContent = "-"
+    button.textContent = "- Cadastrar"
     accessus.appendChild(button)
 }
 
